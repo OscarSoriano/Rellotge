@@ -9,27 +9,25 @@ namespace Rellotge
     [Serializable()]
     class Alarma
     {
-        private String alarma;
-        private bool activa;
+        private String Hora;
+        public bool Activa { get; set; }
 
         public Alarma()
         {
-            this.alarma = "00:00";
-            activa = false;
+            Hora = "00:00";
+            Activa = false;
         }
 
         public Alarma(String alarma, bool activa)
         {
-            this.alarma = alarma;
-            this.activa = activa;
+            Hora = alarma;
+            Activa = activa;
         }
 
         public String horaAlarma
         {
-            get { return alarma; }
-            set { alarma = value; }
+            get { return Hora; }
+            set { Hora = value; }
         }
-
-        public bool alarmaActiva { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace Rellotge
     public partial class MainWindow : Window
     {
         const string FileName = @"..\..\SavedAlarm.bin";
-        private Alarma alarm;
+        private Alarma Alarm;
 
         public MainWindow()
         {
-            alarm = new Alarma();
-            alarm.horaAlarma = "11:11";
-            alarm.alarmaActiva = false;
+            Alarm = new Alarma();
+            Alarm.horaAlarma = "11:11";
+            Alarm.Activa = false;
 
             InitializeComponent();
 
@@ -43,18 +43,18 @@ namespace Rellotge
             {
                 Stream TestFileStream = File.OpenRead(FileName);
                 BinaryFormatter deserializer = new BinaryFormatter();
-                alarm = (Alarma)deserializer.Deserialize(TestFileStream);
+                Alarm = (Alarma)deserializer.Deserialize(TestFileStream);
                 TestFileStream.Close();
             }
 
-            TBAlarma.Text = alarm.horaAlarma;
+            TBAlarma.Text = Alarm.horaAlarma;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Stream TestFileStream = File.Create(FileName);
             BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(TestFileStream, alarm);
+            serializer.Serialize(TestFileStream, Alarm);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace Rellotge
 
         private void tbAlarma_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            alarm.horaAlarma = TBAlarma.Text;
+            Alarm.horaAlarma = TBAlarma.Text;
         }
     }
 }
